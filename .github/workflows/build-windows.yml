@@ -24,6 +24,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: Set up MSVC build tools
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
       - name: Install dependencies
         run: npm install
         working-directory: AppSource
