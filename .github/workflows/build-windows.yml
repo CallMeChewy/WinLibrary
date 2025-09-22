@@ -12,8 +12,8 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-      GYP_MSVS_VERSION: 2022
-      npm_config_msvs_version: 2022
+      GYP_MSVS_VERSION: 2019
+      npm_config_msvs_version: 2019
 
     steps:
       - name: Checkout repository
@@ -24,10 +24,20 @@ jobs:
         with:
           node-version: 18
 
+      - name: Install Visual Studio 2019 Build Tools
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools")) {
+            choco install visualstudio2019buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --passive --norestart" --yes --no-progress
+          } else {
+            Write-Host "VS 2019 Build Tools already installed"
+          }
+
       - name: Set up MSVC build tools
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
+          vsversion: '2019'
 
       - name: Install dependencies
         run: npm install
