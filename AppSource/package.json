@@ -1,0 +1,63 @@
+{
+  "name": "thelibrary",
+  "version": "1.0.0",
+  "description": "OurLibrary Desktop",
+  "main": "main.js",
+  "homepage": "./",
+  "author": {
+    "name": "OurLibrary",
+    "email": "support@ourlibrary.com"
+  },
+  "license": "ISC",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.13.3",
+    "electron-rebuild": "^3.2.9"
+  },
+  "build": {
+    "appId": "com.ourlibrary.desktop",
+    "productName": "OurLibrary",
+    "asarUnpack": [
+      "node_modules/sqlite3/**"
+    ],
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!resources/seed/**"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/seed",
+        "to": "seed"
+      }
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

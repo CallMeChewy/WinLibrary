@@ -1,0 +1,10 @@
+{
+  "local_database_path": "database/OurLibrary.db",
+  "database_file_id": "19uVpwt7uROQ_BCdsea32LlBUQF5v7zJl",
+  "database_filename": "OurLibrary.db",
+  "total_books": 1219,
+  "sync_settings": {
+    "auto_sync_enabled": false,
+    "sync_interval_hours": 24
+  }
+}

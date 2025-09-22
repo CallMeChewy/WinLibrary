@@ -1,0 +1,16 @@
+# Dependencies
+AppSource/node_modules/
+
+# Build outputs
+AppSource/dist/
+FrameworkAndDependencies/
+
+# Logs and temp files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Local artifacts
+/OurLibrary/
